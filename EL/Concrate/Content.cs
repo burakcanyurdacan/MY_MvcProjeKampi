@@ -21,8 +21,8 @@ namespace EL.Concrate
         #endregion
 
         #region Writer tablo ilişkisi
-        public int WriterId { get; set; }
-        public virtual Writer Writer { get; set; } 
+        //public int WriterId { get; set; }
+        //public virtual Writer Writer { get; set; } 
         #endregion
     }
 }

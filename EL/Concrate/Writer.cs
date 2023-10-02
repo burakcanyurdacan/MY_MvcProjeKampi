@@ -27,7 +27,7 @@ namespace EL.Concrate
         #endregion
 
         #region Content tablo ilişkisi
-        public ICollection<Content> Contents { get; set; } 
+       // public ICollection<Content> Contents { get; set; } 
         #endregion
     }
 }
