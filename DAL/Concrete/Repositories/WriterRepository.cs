@@ -19,12 +19,12 @@ namespace DAL.Concrete.Repositories
             throw new NotImplementedException();
         }
 
-        public List<Writer> GetAll()
+        public List<Writer> List()
         {
             throw new NotImplementedException();
         }
 
-        public List<Writer> GetAllFilter(Expression<Func<Writer, bool>> filter)
+        public List<Writer> List(Expression<Func<Writer, bool>> filter)
         {
             throw new NotImplementedException();
         }

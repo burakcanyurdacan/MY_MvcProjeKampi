@@ -24,12 +24,12 @@ namespace DAL.Concrete.Repositories
             c.SaveChanges();
         }
 
-        public List<T> GetAll()
+        public List<T> List()
         {
             return obj.ToList();
         }
 
-        public List<T> GetAllFilter(Expression<Func<T, bool>> filter)
+        public List<T> List(Expression<Func<T, bool>> filter)
         {
             return obj.Where(filter).ToList();
         }

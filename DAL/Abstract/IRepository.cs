@@ -9,10 +9,10 @@ namespace DAL.Abstract
 {
     public interface IRepository<T>
     {
-        List<T> GetAll();
+        List<T> List();
         void Insert(T item);
         void Delete(T item);
         void Update(T item);
-        List<T> GetAllFilter(Expression<Func<T, bool>> filter);
+        List<T> List(Expression<Func<T, bool>> filter);
     }
 }

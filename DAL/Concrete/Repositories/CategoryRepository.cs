@@ -20,12 +20,12 @@ namespace DAL.Concrete.Repositories
             throw new NotImplementedException();
         }
 
-        public List<Category> GetAll()
+        public List<Category> List()
         {
             throw new NotImplementedException();
         }
 
-        public List<Category> GetAllFilter(Expression<Func<Category, bool>> filter)
+        public List<Category> List(Expression<Func<Category, bool>> filter)
         {
             throw new NotImplementedException();
         }

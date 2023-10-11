@@ -14,7 +14,7 @@ namespace BLL.Concrete
 
         public List<Category> GetListBLL()
         {
-            return repo.GetAll();
+            return repo.List();
         }
 
         public void AddCategoryBLL(Category p)
