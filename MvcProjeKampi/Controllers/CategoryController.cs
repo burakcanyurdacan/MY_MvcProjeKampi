@@ -1,4 +1,5 @@
 ﻿using BLL.Concrete;
+using DAL.EntityFramework;
 using EL.Concrate;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace MvcProjeKampi.Controllers
     public class CategoryController : Controller
     {
         // GET: Category
-        CategoryManager cm = new CategoryManager();
+        CategoryManager cm = new CategoryManager(new EfCategoryDal());
         public ActionResult Index()
         {
             return View();
@@ -19,12 +20,21 @@ namespace MvcProjeKampi.Controllers
 
         public ActionResult GetCategoryList()
         {
-            var categoryvalues = cm.GetListBLL();
+            var categoryvalues = cm.GetCategories();
             return View(categoryvalues);
         }
+
+        [HttpGet]
+        public ActionResult AddCategory()
+        {
+            
+            return View();
+        }
+
+        [HttpPost]
         public ActionResult AddCategory(Category p)
         {
-            cm.AddCategoryBLL(p);
+            //cm.AddCategoryBLL(p);
             return RedirectToAction("GetCategoryList");
         }
     }
