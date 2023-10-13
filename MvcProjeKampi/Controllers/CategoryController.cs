@@ -1,4 +1,6 @@
 ﻿using BLL.Concrete;
+using BLL.ValidationRules;
+using FluentValidation.Results;
 using DAL.EntityFramework;
 using EL.Concrate;
 using System;
@@ -27,7 +29,7 @@ namespace MvcProjeKampi.Controllers
         [HttpGet]
         public ActionResult AddCategory()
         {
-            
+
             return View();
         }
 
@@ -35,7 +37,21 @@ namespace MvcProjeKampi.Controllers
         public ActionResult AddCategory(Category p)
         {
             //cm.AddCategoryBLL(p);
-            return RedirectToAction("GetCategoryList");
+            CategoryValitator catVal = new CategoryValitator();
+            ValidationResult results = catVal.Validate(p);
+            if (results.IsValid)
+            {
+                cm.CategoryAddBLL(p);
+                return RedirectToAction("GetCategoryList");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
         }
     }
 }

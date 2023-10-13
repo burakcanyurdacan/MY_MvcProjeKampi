@@ -1,4 +1,4 @@
-﻿
+﻿@model EL.Concrate.Category
 @{
     Layout = null;
 }
@@ -6,12 +6,27 @@
 <h1>Yeni Kategori Ekleme</h1>
 <br />
 <br />
-<form method="post" class="col-6">
+@using (Html.BeginForm("AddCategory", "Category", FormMethod.Post))
+{
     <div class="mb-3">
-        <input type="text" name="CategoryName" placeholder="Kategori Adı" class="form-control" />
+        @Html.Label("Kategori Adı")
+        @Html.TextBoxFor(x => x.CategoryName)
+        @Html.ValidationMessageFor(x=>x.CategoryName)
     </div>
     <div class="mb-3">
-        <input type="text" name="CategoryDescription" placeholder="Kategori Açıklaması" class="form-control" />
+        @Html.Label("Kategori Açıklaması")
+        @Html.TextBoxFor(x => x.CategoryDescription)
+        @Html.ValidationMessageFor(x => x.CategoryDescription)
     </div>
-    <button class="btn btn-primary">Ekle</button>
-</form>
+    <button>Kaydet</button>
+}
+
+@*<form method="post" class="col-6">
+        <div class="mb-3">
+            <input type="text" name="CategoryName" placeholder="Kategori Adı" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <input type="text" name="CategoryDescription" placeholder="Kategori Açıklaması" class="form-control" />
+        </div>
+        <button class="btn btn-primary">Ekle</button>
+    </form>*@

@@ -14,12 +14,17 @@ namespace BLL.Concrete
     {
         #region Constructor
         ICategoryDal _categoryDal;
-
         public CategoryManager(ICategoryDal categoryDal)
         {
             _categoryDal = categoryDal;
-        } 
+        }
         #endregion
+
+        public void CategoryAddBLL(Category category)
+        {
+
+            _categoryDal.Insert(category);
+        }
 
         public List<Category> GetCategories()
         {

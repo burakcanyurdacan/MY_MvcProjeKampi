@@ -10,5 +10,6 @@ namespace BLL.Abstract
     public interface ICategoryService
     {
         List<Category> GetCategories();
+        void CategoryAddBLL(Category category);
     }
 }
