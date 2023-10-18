@@ -1,4 +1,9 @@
-﻿using System;
+﻿using BLL.Concrete;
+using BLL.ValidationRules;
+using DAL.EntityFramework;
+using EL.Concrate;
+using FluentValidation.Results;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +13,36 @@ namespace MvcProjeKampi.Controllers
 {
     public class AdminCategoryController : Controller
     {
-        // GET: AdminCategory
+        CategoryManager cm = new CategoryManager(new EfCategoryDal());
         public ActionResult Index()
         {
+            var catValues = cm.GetCategories();
+            return View(catValues);
+        }
+
+        [HttpGet]
+        public ActionResult AddCategory() 
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddCategory(Category p)
+        {
+            CategoryValitator catVal = new CategoryValitator();
+            ValidationResult result = catVal.Validate(p);
+            if (result.IsValid)
+            {
+                cm.CategoryAddBLL(p);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
             return View();
         }
     }

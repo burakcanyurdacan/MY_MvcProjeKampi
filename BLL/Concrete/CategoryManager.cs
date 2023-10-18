@@ -26,6 +26,11 @@ namespace BLL.Concrete
             _categoryDal.Insert(category);
         }
 
+        public Category GetByCategoryId(int id)
+        {
+            return _categoryDal.Get(x => x.CategoryId == id);
+        }
+
         public List<Category> GetCategories()
         {
             return _categoryDal.List();

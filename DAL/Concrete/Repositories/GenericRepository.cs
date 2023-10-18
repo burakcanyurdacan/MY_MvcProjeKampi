@@ -44,5 +44,10 @@ namespace DAL.Concrete.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public T Get(Expression<Func<T, bool>> filter)
+        {
+            return obj.SingleOrDefault(filter);
+        }
     }
 }
