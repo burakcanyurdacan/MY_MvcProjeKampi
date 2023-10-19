@@ -12,5 +12,7 @@ namespace BLL.Abstract
         List<Category> GetCategories();
         void CategoryAddBLL(Category category);
         Category GetByCategoryId(int id);
+        void CategoryDeleteBLL(Category category);
+        void CategoryUpdateBLL(Category category);
     }
 }

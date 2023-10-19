@@ -26,6 +26,16 @@ namespace BLL.Concrete
             _categoryDal.Insert(category);
         }
 
+        public void CategoryDeleteBLL(Category category)
+        {
+            _categoryDal.Delete(category);
+        }
+
+        public void CategoryUpdateBLL(Category category)
+        {
+            _categoryDal.Update(category);
+        }
+
         public Category GetByCategoryId(int id)
         {
             return _categoryDal.Get(x => x.CategoryId == id);
