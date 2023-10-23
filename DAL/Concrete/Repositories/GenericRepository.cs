@@ -20,7 +20,9 @@ namespace DAL.Concrete.Repositories
 
         public void Delete(T item)
         {
-            obj.Remove(item);
+            var delEnt = c.Entry(item);
+            delEnt.State = EntityState.Deleted;
+            //obj.Remove(item);
             c.SaveChanges();
         }
 
@@ -36,13 +38,17 @@ namespace DAL.Concrete.Repositories
 
         public void Insert(T item)
         {
-            obj.Add(item);
+            var addEnt = c.Entry(item);
+            addEnt.State = EntityState.Added;
+            //obj.Add(item);
             c.SaveChanges();
         }
 
         public void Update(T item)
         {
-            throw new NotImplementedException();
+            var updEnt = c.Entry(item);
+            updEnt.State = EntityState.Modified; 
+            c.SaveChanges();
         }
 
         public T Get(Expression<Func<T, bool>> filter)

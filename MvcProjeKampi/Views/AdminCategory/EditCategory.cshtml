@@ -1,8 +1,27 @@
-﻿
+﻿@model EL.Concrate.Category
 @{
     ViewBag.Title = "EditCategory";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
+<br />
 <h2>Kategori Güncelle</h2>
-
+@using (Html.BeginForm("EditCategory", "AdminCategory", FormMethod.Post))
+{
+    <div class="mb-3">
+        @Html.Label("Kategori Id")
+        @Html.TextBoxFor(x => x.CategoryId, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CategoryId)
+    </div>
+    <div class="mb-3">
+        @Html.Label("Kategori Adı")
+        @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CategoryName)
+    </div>
+    <div class="mb-3">
+        @Html.Label("Kategori Açıklaması")
+        @Html.TextAreaFor(x => x.CategoryDescription, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CategoryDescription)
+    </div>
+    <button class="btn btn-success">Güncelle</button>
+    <a href="/AdminCategory/Index" class="btn btn-secondary">Geri</a>
+}

@@ -63,6 +63,7 @@ namespace MvcProjeKampi.Controllers
         [HttpPost]
         public ActionResult EditCategory(Category p)
         {
+            cm.CategoryUpdateBLL(p);
             return RedirectToAction("Index");
         }
     }
