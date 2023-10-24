@@ -17,9 +17,11 @@ namespace EL.Concrate
         public string WriterSurname { get; set; }
         [StringLength(100)]
         public string WriterImg { get; set; }
-        [StringLength(50)]
+        [StringLength(200)]
+        public string WriterAbout { get; set; } 
+        [StringLength(200)]
         public string WriterMail { get; set; }
-        [StringLength(20)]
+        [StringLength(200)]
         public string WriterPassword { get; set; }
 
         #region Heading tablo ilişkisi

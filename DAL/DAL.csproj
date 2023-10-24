@@ -72,6 +72,10 @@
     <Compile Include="Migrations\202310020742110_mig_Writer-Content-Relationship.designer.cs">
       <DependentUpon>202310020742110_mig_Writer-Content-Relationship.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310240544491_mig_WriterKolonGuncelleme.cs" />
+    <Compile Include="Migrations\202310240544491_mig_WriterKolonGuncelleme.designer.cs">
+      <DependentUpon>202310240544491_mig_WriterKolonGuncelleme.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -88,6 +92,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202310020742110_mig_Writer-Content-Relationship.resx">
       <DependentUpon>202310020742110_mig_Writer-Content-Relationship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310240544491_mig_WriterKolonGuncelleme.resx">
+      <DependentUpon>202310240544491_mig_WriterKolonGuncelleme.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

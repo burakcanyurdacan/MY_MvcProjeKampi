@@ -1,5 +1,8 @@
 ﻿using BLL.Concrete;
+using BLL.ValidationRules;
 using DAL.EntityFramework;
+using EL.Concrate;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +19,32 @@ namespace MvcProjeKampi.Controllers
         {
             var wrtValues = wm.GetWriters();
             return View(wrtValues);
+        }
+
+        [HttpGet]
+        public ActionResult WriterAdd()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult WriterAdd(Writer w)
+        {
+            WriterValidator wrtVal = new WriterValidator();
+            ValidationResult result = wrtVal.Validate(w);
+            if (result.IsValid)
+            {
+                wm.WriterAddBLL(w);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
         }
     }
 }
