@@ -23,6 +23,8 @@ namespace EL.Concrate
         public string WriterMail { get; set; }
         [StringLength(200)]
         public string WriterPassword { get; set; }
+        [StringLength(100)]
+        public string WriterTitle { get; set; }
 
         #region Heading tablo ilişkisi
         public ICollection<Heading> Headings { get; set; }
