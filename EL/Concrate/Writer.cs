@@ -15,7 +15,7 @@ namespace EL.Concrate
         public string WriterName { get; set; }
         [StringLength(50)]
         public string WriterSurname { get; set; }
-        [StringLength(100)]
+        [StringLength(255)]
         public string WriterImg { get; set; }
         [StringLength(200)]
         public string WriterAbout { get; set; } 
@@ -25,6 +25,8 @@ namespace EL.Concrate
         public string WriterPassword { get; set; }
         [StringLength(100)]
         public string WriterTitle { get; set; }
+
+        public bool WriterStatus { get; set; }
 
         #region Heading tablo ilişkisi
         public ICollection<Heading> Headings { get; set; }
