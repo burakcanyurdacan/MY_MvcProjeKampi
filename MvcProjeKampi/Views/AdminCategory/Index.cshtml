@@ -6,37 +6,58 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<table class="table table-striped table-bordered">
-    <thead class="table-dark">
-        <tr>
-            <th>#</th>
-            <th>Kategori</th>
-            <th>Açıklama</th>
-            <th>Durum</th>
-            <th>İşlemler</th>
-        </tr>
-    </thead>
-    @foreach (var item in Model)
-    {
-        <tbody>
-            <tr>
-                <th>@item.CategoryId</th>
-                <td>@item.CategoryName</td>
-                <td>@item.CategoryDescription</td>
-                <td>@item.CategoryStatus</td>
-                <td class="col-2">
-                    <a href="/AdminCategory/DeleteCategory/@item.CategoryId" class="btn btn-danger" title="Sil">
-                        <i class="nav-icon fas fa-trash-alt"></i>
-                    </a>
-                    <a href="/AdminCategory/EditCategory/@item.CategoryId" class="btn btn-warning" title="Güncelle">
-                        <i class="nav-icon fas fa-sync-alt"></i>
-                    </a>
-                    <a href="#" class="btn btn-primary" title="Başlıklar">
-                        <i class="nav-icon fas fa-pen-fancy"></i>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
+<h2>Kategoriler</h2>
+<hr />
+<section class="content">
+    @if (Model.Count > 0)
+    {<div class="card">
+            <div class="card-body p-0">
+                <table class="table table-striped table-bordered projects">
+                    <thead>
+                        <tr class="text-center">
+                            <th>#</th>
+                            <th>Kategori</th>
+                            <th>Açıklama</th>
+                            <th>Durum</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        <tbody>
+                            <tr>
+                                <td>@item.CategoryId</td>
+                                <td>@item.CategoryName</td>
+                                <td>@item.CategoryDescription</td>
+                                <td>@item.CategoryStatus</td>
+                                <td class="col-2">
+                                    <a href="/AdminCategory/DeleteCategory/@item.CategoryId" class="btn btn-danger" title="Sil">
+                                        <i class="nav-icon fas fa-trash-alt"></i>
+                                    </a>
+                                    <a href="/AdminCategory/EditCategory/@item.CategoryId" class="btn btn-warning" title="Güncelle">
+                                        <i class="nav-icon fas fa-sync-alt"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-primary" title="Başlıklar">
+                                        <i class="nav-icon fas fa-pen-fancy"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    }
+                </table>
+            </div>
+        </div>
     }
-</table>
-<a href="/AdminCategory/AddCategory" class="btn btn-info">Yeni Kategori</a>
+    else
+    {
+        <div class="alert alert-info p-2">
+            <div class="row d-flex align-items-stretch">
+                <span class="fas fa-info-circle"></span> Bu sayfada bir kayıt yoktur. Yeni kayıt eklemek için aşağıdaki butonu kullanınız.
+            </div>
+        </div>
+    }
+</section>
+<hr />
+<div class="content pb-3">
+    <a href="/AdminCategory/AddCategory" class="btn btn-info">Yeni Kategori</a>
+</div>

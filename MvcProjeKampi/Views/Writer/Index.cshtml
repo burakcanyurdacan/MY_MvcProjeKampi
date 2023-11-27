@@ -7,46 +7,63 @@
 }
 
 <h2>Yazarlar</h2>
+<hr />
 <section class="content">
-    <div class="card card-solid">
-        <div class="card-body pb-0">
-            <div class="row d-flex align-items-stretch">
-                <!-- Kart başlangıcı -->
-                @foreach (var item in Model)
-                {
-                    <div class="col-12 mb-3 col-sm-6 col-md-4 d-flex align-items-stretch">
-                        <div class="card bg-light">
-                            <div class="card-header text-muted border-bottom-0">
-                                @item.WriterTitle
-                            </div>
-                            <div class="card-body pt-0">
-                                <div class="row">
-                                    <div class="col-7">
-                                        <h2 class="lead"><b>@item.WriterName&nbsp;@item.WriterSurname</b></h2>
-                                        <p class="text-muted text-sm"><b>Hakkında: </b> @item.WriterAbout</p>
-                                        <ul class="ml-4 mb-0 fa-ul text-muted">
-                                            <li class="small"><span class="fa-li"><i class="far fa-lg fa-envelope"></i></span> Mail: @item.WriterMail</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-5 text-center">
-                                        <img src="~/Tema/dist/img/user1-128x128.jpg" alt="" class="img-circle img-fluid">
+
+    <!-- Kart başlangıcı -->
+    @if (Model.Count > 0)
+    {
+        <div class="card card-solid">
+            <div class="card-body pb-0">
+                <div class="row d-flex align-items-stretch">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-12 mb-3 col-sm-6 col-md-4 d-flex align-items-stretch">
+                            <div class="card bg-light">
+                                <div class="card-header text-muted border-bottom-0">
+                                    @item.WriterTitle
+                                </div>
+                                <div class="card-body pt-0">
+                                    <div class="row">
+                                        <div class="col-7">
+                                            <h2 class="lead"><b>@item.WriterName&nbsp;@item.WriterSurname</b></h2>
+                                            <p class="text-muted text-sm"><b>Hakkında: </b> @item.WriterAbout</p>
+                                            <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                <li class="small"><span class="fa-li"><i class="far fa-lg fa-envelope"></i></span> Mail: @item.WriterMail</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-5 text-center">
+                                            <img src="~/Tema/dist/img/user1-128x128.jpg" alt="" class="img-circle img-fluid">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="text-right">
-                                    <a href="#" class="btn btn-sm bg-teal">
-                                        <i class="fas fa-comments"></i> Başlıklar
-                                    </a>
-                                    <a href="~/Writer/EditWriter/@item.WriterId" class="btn btn-sm btn-primary">
-                                        <i class="fas fa-user"></i> Profili Düzenle
-                                    </a>
+                                <div class="card-footer">
+                                    <div class="text-right">
+                                        <a href="#" class="btn btn-sm bg-teal">
+                                            <i class="fas fa-comments"></i> Başlıklar
+                                        </a>
+                                        <a href="~/Writer/EditWriter/@item.WriterId" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-user"></i> Profili Düzenle
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                }
+                    }
+                </div>
             </div>
         </div>
-    </div>
+    }
+    else
+    {
+        <div class="alert alert-info p-2">
+            <div class="row d-flex align-items-stretch">
+                <span class="fas fa-info-circle"></span> Bu sayfada bir kayıt yoktur. Yeni kayıt eklemek için aşağıdaki butonu kullanınız.
+            </div>
+        </div>
+    }
 </section>
+<hr />
+<div class="content pb-3">
+    <a href="/Writer/AddWriter" class="btn btn-info">Yeni Yazar</a>
+</div>
